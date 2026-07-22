@@ -3,6 +3,8 @@ export type MenuItemData = {
   name: string;
   description: string;
   price: string;
+  coldPrice?: string;
+  hotPrice?: string;
   featured?: boolean;
 };
 export type MenuCategory = {

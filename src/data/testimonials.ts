@@ -15,7 +15,7 @@ export const testimonials: Testimonial[] = [
   {
     title: "Wi-Fi yang mendukung",
     summary:
-      "Koneksi internet menjadi salah satu alasan LYON'S cocok untuk belajar dan bekerja.",
+      "Koneksi internet menjadi salah satu alasan Supala cocok untuk belajar dan bekerja.",
   },
   {
     title: "Buka setiap saat",

@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #351713;
-  --color-primary-container: #54251e;
-  --color-accent: #d85b32;
-  --color-background: #f3e3d5;
-  --color-surface: #faecdf;
-  --color-text: #281815;
-  --color-muted: #604b44;
-  --color-outline: #d8b9a5;
-  --font-heading: var(--font-eb-garamond);
-  --font-sans: var(--font-plus-jakarta);
-  --radius-card: 16px;
-  --radius-button: 6px;
-  --container-container: 1280px;
+  --color-primary: #101010;
+  --color-primary-container: #242424;
+  --color-accent: #b7784e;
+  --color-background: #f3f0ea;
+  --color-surface: #ffffff;
+  --color-text: #111111;
+  --color-muted: #666666;
+  --color-outline: #d8d8d3;
+  --font-heading: var(--font-oswald);
+  --font-sans: var(--font-open-sans);
+  --font-accent: var(--font-lora);
+  --radius-card: 0px;
+  --radius-button: 0px;
+  --container-container: 1170px;
 }
 
 * {
@@ -25,15 +26,27 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  background: #f3e3d5;
-  color: #281815;
-  font-family: var(--font-plus-jakarta), sans-serif;
+  background: #ffffff;
+  color: #111111;
+  font-family: var(--font-open-sans), sans-serif;
 }
 a {
   text-underline-offset: 4px;
 }
 .section-space {
-  padding-block: 5.5rem;
+  padding-block: 5rem;
+}
+.font-accent { font-family: var(--font-lora), serif; }
+.paper-edge { position: relative; }
+.paper-edge::after {
+  position: absolute;
+  right: 0;
+  bottom: -13px;
+  left: 0;
+  z-index: 2;
+  height: 14px;
+  content: "";
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23f3f0ea' d='M0 0h1200v8l-34 3-28-3-40 5-46-4-38 5-48-3-42 4-53-5-39 4-46-3-35 5-52-4-45 3-41-4-48 5-36-4-50 3-48-4-51 5-39-4-47 3-45-4-43 5-43-4-39 3-40-4-38 4L0 9z'/%3E%3C/svg%3E") center bottom / cover no-repeat;
 }
 .hero-image {
   animation: hero-settle 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -112,12 +125,12 @@ a {
 
 @media (min-width: 768px) {
   .section-space {
-    padding-block: 7rem;
+    padding-block: 6.5rem;
   }
 }
 @media (min-width: 1024px) {
   .section-space {
-    padding-block: 8rem;
+    padding-block: 7.5rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

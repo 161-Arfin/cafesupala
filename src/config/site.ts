@@ -1,20 +1,21 @@
 const imageRoot = "https://lh3.googleusercontent.com/aida-public/";
 
 export const siteConfig = {
-  name: "LYON’S",
-  title: "LYON’S Café & Co-Working Space 24 Jam di Sleman",
-  description: "Café dan co-working space 24 jam di Sleman, Yogyakarta, dengan kopi terjangkau, area kerja nyaman, Wi-Fi, dan meeting room.",
+  name: "Supala Coffee and Space",
+  shortName: "Supala",
+  title: "Supala Coffee and Space | Coffee Shop Babarsari",
+  description:
+    "Nikmati kopi klasik, minuman signature, dan suasana santai di Supala Coffee and Space, coffee shop di Jalan Babarsari, Sleman, Yogyakarta.",
   keywords: [
-    "cafe 24 jam Sleman",
-    "coworking space Sleman",
-    "cafe untuk kerja Jogja",
-    "meeting room Sleman",
-    "LYON’S Cafe",
+    "Supala Coffee and Space",
+    "coffee shop Babarsari",
+    "cafe Babarsari",
+    "kedai kopi Sleman",
+    "cafe Yogyakarta",
+    "kopi dan non coffee",
   ],
   links: {
-    maps: "https://maps.app.goo.gl/R5dmFYXHRxX3Hwzq5",
-    whatsapp: "https://wa.me/6282289987300",
-    meeting: "https://wa.me/6282289987300?text=Halo%2C+saya+ingin+booking+Meeting+Room+di+Lyons.+Boleh+minta+info+ketersediaannya%3F",
+    maps: "https://maps.app.goo.gl/Sio38vaemykBrmFp9",
   },
   images: {
     logo: "/images/lyons-logo.png",
