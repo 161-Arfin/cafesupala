@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.5fr_.7fr_.8fr] lg:gap-12">
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="#top" className="inline-flex items-center gap-2.5 font-heading text-2xl font-semibold">
-              <Image src={siteConfig.images.logo} alt="Logo LYON’S Café dan Co-Working Space" width={48} height={48} className="h-11 w-11 object-contain" />
+              <Image src={siteConfig.images.logo} alt="Logo LYON’S Café dan Co-Working Space" width={48} height={48} loading="lazy" className="h-11 w-11 object-contain" />
               LYON’S
             </a>
             <p className="mt-3 max-w-md text-xs leading-6 text-white/55">Café dan co-working space 24 jam di Sleman untuk bekerja, bertemu, dan menikmati kopi.</p>

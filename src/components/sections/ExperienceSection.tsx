@@ -94,6 +94,7 @@ export function ExperienceSection() {
                 src={activeItem.image}
                 alt={activeItem.imageAlt}
                 fill
+                loading="lazy"
                 quality={100}
                 sizes="(min-width:1024px) 58vw, 100vw"
                 className="menu-enter object-cover"

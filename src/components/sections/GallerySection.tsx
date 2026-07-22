@@ -21,7 +21,7 @@ export function GallerySection() {
         <div className="grid auto-rows-36 grid-cols-2 gap-3 md:auto-rows-[260px] md:grid-cols-12 md:gap-4 lg:auto-rows-[300px]">
           {galleryImages.map((image) => (
             <figure key={image.label} className={`group reveal relative overflow-hidden rounded-card border border-white/10 bg-primary-container ${image.className}`}>
-              <Image src={image.src} alt={image.alt} fill quality={100} sizes="(min-width: 768px) 60vw, (min-width: 420px) 50vw, 100vw" className={`object-cover transition-transform duration-700 group-hover:scale-[1.025] ${image.imageClassName}`} />
+              <Image src={image.src} alt={image.alt} fill loading="lazy" quality={100} sizes="(min-width: 768px) 60vw, (min-width: 420px) 50vw, 100vw" className={`object-cover transition-transform duration-700 group-hover:scale-[1.025] ${image.imageClassName}`} />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/65 via-transparent to-transparent" />
               <figcaption className={`absolute bottom-4 left-4 text-[10px] font-semibold uppercase tracking-[.2em] text-white md:bottom-6 md:left-6 md:text-xs ${image.captionClassName}`}><span className="mr-2 inline-block h-px w-6 align-middle bg-accent md:mr-3 md:w-8" />{image.label}</figcaption>
             </figure>
