@@ -14,6 +14,20 @@ export function Footer() {
               LYON’S
             </a>
             <p className="mt-3 max-w-md text-xs leading-6 text-white/55">Café dan co-working space 24 jam di Sleman untuk bekerja, bertemu, dan menikmati kopi.</p>
+            <div className="mt-4 flex items-center gap-2" aria-label="Media sosial LYON’S segera tersedia">
+              <span title="Instagram — segera tersedia" className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/55" role="img" aria-label="Instagram, tautan segera tersedia">
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+              <span title="Facebook — segera tersedia" className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/55" role="img" aria-label="Facebook, tautan segera tersedia">
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
+                  <path d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5H17V3.9c-.7-.1-1.5-.2-2.3-.2-2.3 0-3.9 1.4-3.9 4V10H8.2v3h2.6v8h2.9Z" />
+                </svg>
+              </span>
+            </div>
           </div>
 
           {footerGroups.map((group) => (
