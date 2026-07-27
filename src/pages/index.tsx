@@ -1,5 +1,4 @@
 import Head from "next/head";
-import supalaLogo from "@/docs/sumala_icon.png";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { AboutUsSection } from "@/components/sections/about-us/AboutUsSection";
 import { ExperienceSection } from "@/components/sections/cerita/ExperienceSection";
@@ -13,7 +12,9 @@ import { business } from "@/data/business";
 
 export default function Home() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
-  const socialImage = siteUrl ? `${siteUrl}${siteConfig.images.hero}` : undefined;
+  const socialImage = siteUrl
+    ? `${siteUrl}${siteConfig.images.hero}`
+    : undefined;
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CafeOrCoffeeShop",
@@ -60,8 +61,8 @@ export default function Home() {
         <meta name="keywords" content={siteConfig.keywords.join(", ")} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta name="theme-color" content="#101010" />
-        <link rel="icon" href={supalaLogo.src} type="image/png" />
-        <link rel="apple-touch-icon" href={supalaLogo.src} />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/supala-logo.png" />
         {siteUrl && <link rel="canonical" href={siteUrl} />}
         <meta property="og:title" content={siteConfig.title} />
         <meta property="og:description" content={siteConfig.description} />
@@ -70,12 +71,20 @@ export default function Home() {
         <meta property="og:site_name" content={siteConfig.name} />
         {siteUrl && <meta property="og:url" content={siteUrl} />}
         {socialImage && <meta property="og:image" content={socialImage} />}
-        {socialImage && <meta property="og:image:alt" content="Suasana Supala Coffee and Space" />}
+        {socialImage && (
+          <meta
+            property="og:image:alt"
+            content="Suasana Supala Coffee and Space"
+          />
+        )}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={siteConfig.title} />
         <meta name="twitter:description" content={siteConfig.description} />
         {socialImage && <meta name="twitter:image" content={socialImage} />}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </Head>
       <MainLayout>
         <HomeSection />

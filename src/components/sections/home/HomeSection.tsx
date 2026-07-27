@@ -1,5 +1,4 @@
 import Image from "next/image";
-import supalaLogo from "@/docs/sumala_icon.png";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -24,8 +23,11 @@ export function HomeSection() {
       <Container className="relative z-10 flex min-h-[760px] items-center justify-center pb-20 pt-32 text-center text-white md:min-h-screen">
         <div className="max-w-4xl">
           <Image
-            src={supalaLogo}
+            src="/images/supala-logo.png"
             alt=""
+            width={892}
+            height={892}
+            unoptimized
             aria-hidden="true"
             loading="eager"
             className="hero-reveal mx-auto mb-5 h-24 w-24 rounded-full bg-background/95 p-2 md:h-28 md:w-28"
