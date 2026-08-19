@@ -135,5 +135,3 @@ Website ini sangat optimal jika di-deploy ke **Vercel** secara gratis:
 ## 📄 Lisensi & Hak Penggunaan
 
 Template ini dilisensikan untuk penggunaan pribadi maupun proyek komersial klien Anda (Freelance). Dilarang menjual ulang (*resell*) template mentah ini secara langsung tanpa nilai tambah.
-
-*Dibuat dengan ❤️ untuk kemajuan bisnis F&B dan kreator web.*
