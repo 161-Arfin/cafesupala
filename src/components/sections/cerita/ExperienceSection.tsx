@@ -55,45 +55,18 @@ function ServiceIcon({ type }: { type: string }) {
 export function ExperienceSection() {
   return (
     <>
-      <section className="relative flex min-h-[580px] items-center justify-center overflow-hidden bg-primary bg-fixed py-24 text-center text-white">
-        <Image
-          src={siteConfig.images.barista}
-          alt="Barista Supala menyiapkan kopi"
-          fill
-          loading="lazy"
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-primary/70" />
-        <div className="reveal relative z-10 max-w-2xl px-5">
-          <p className="font-accent text-sm italic text-accent">
-            Sebuah jeda yang berarti
-          </p>
-          <h2 className="mt-4 font-heading text-5xl font-bold uppercase leading-none tracking-[.04em] md:text-6xl">
-            Kopi yang Dibuat
-            <br />
-            untuk Dinikmati
-          </h2>
-          <p className="mx-auto mt-6 max-w-lg text-sm leading-7 text-white/70">
-            Tidak ada proses yang kami anggap kecil. Setiap pilihan, takaran,
-            dan waktu seduh adalah cara kami menghormati rasa.
-          </p>
-          <span className="mx-auto mt-8 block h-px w-20 bg-accent" />
-        </div>
-      </section>
-
-      <section className="bg-surface py-20 md:py-28">
+      <section className="py-20 md:py-24 bg-[#151518] border-t border-white/5">
         <Container>
-          <div className="grid gap-12 text-center sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
-              <article key={service.title} className="reveal">
-                <div className="mx-auto h-20 w-20 text-accent [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-none [&_svg]:stroke-current [&_svg]:stroke-[1.25]">
+              <article key={service.title} className="card-luxury p-8 text-center flex flex-col items-center">
+                <div className="mx-auto h-16 w-16 text-accent p-3 rounded-2xl bg-accent/10 border border-accent/20 [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-none [&_svg]:stroke-current [&_svg]:stroke-[1.5]">
                   <ServiceIcon type={service.icon} />
                 </div>
-                <h3 className="mt-5 font-heading text-lg font-bold uppercase text-primary">
+                <h3 className="mt-5 font-serif-heading text-lg font-bold uppercase text-white">
                   {service.title}
                 </h3>
-                <p className="mt-3 text-xs leading-6 text-muted">
+                <p className="mt-2.5 text-xs leading-relaxed text-white/60">
                   {service.body}
                 </p>
               </article>
@@ -102,19 +75,19 @@ export function ExperienceSection() {
         </Container>
       </section>
 
-      <section className="bg-surface pb-20 md:pb-28">
+      <section className="py-16 md:py-20 bg-[#121214]">
         <Container>
-          <div className="grid overflow-hidden bg-primary text-white md:grid-cols-2">
+          <div className="grid rounded-3xl overflow-hidden border border-white/10 bg-[#18181c] text-white md:grid-cols-2">
             <div className="reveal flex min-h-80 flex-col justify-center p-10 md:p-14">
-              <p className="font-accent text-sm italic text-white/70">
+              <span className="text-xs font-bold uppercase tracking-[.2em] text-accent">
                 Tentang rasa yang dekat
-              </p>
-              <h2 className="mt-3 font-heading text-4xl font-bold uppercase leading-tight md:text-5xl">
+              </span>
+              <h2 className="mt-3 font-serif-heading text-3xl sm:text-4xl font-bold uppercase leading-tight text-white">
                 Temukan Minuman
                 <br />
-                Favoritmu di Supala
+                Favoritmu di Cafeko
               </h2>
-              <p className="mt-5 max-w-md text-sm leading-7 text-white/75">
+              <p className="mt-4 max-w-md text-sm text-white/70 leading-relaxed">
                 Dari espresso klasik hingga signature yang segar, semuanya
                 diracik untuk menemani ritmemu sendiri.
               </p>
@@ -122,12 +95,13 @@ export function ExperienceSection() {
             <div className="relative min-h-80">
               <Image
                 src={siteConfig.images.workspace}
-                alt="Suasana hangat di Supala Coffee"
+                alt="Suasana hangat di Cafeko Coffee"
                 fill
                 loading="lazy"
                 sizes="(min-width:768px) 50vw, 100vw"
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#18181c] via-transparent to-transparent" />
             </div>
           </div>
         </Container>
@@ -135,3 +109,4 @@ export function ExperienceSection() {
     </>
   );
 }
+

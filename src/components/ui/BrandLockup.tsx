@@ -10,24 +10,26 @@ export function BrandLockup({
   compact = false,
 }: BrandLockupProps) {
   return (
-    <span className="inline-flex items-center gap-2.5">
-      <Image
-        src="/images/supala-logo.png"
-        alt=""
-        width={892}
-        height={892}
-        unoptimized
-        loading={inverted ? "lazy" : "eager"}
-        className={`${compact ? "h-11 w-11 md:h-12 md:w-12" : "h-16 w-16"} shrink-0 object-contain ${inverted ? "brightness-0 invert" : ""}`}
-      />
+    <span className="inline-flex items-center gap-2.5 group">
+      <span className="relative flex items-center justify-center p-1 rounded-full bg-white/5 border border-white/10 group-hover:border-accent/40 transition-colors">
+        <Image
+          src="/images/cafeko-logo.png"
+          alt="Cafeko Logo"
+          width={892}
+          height={892}
+          unoptimized
+          loading={inverted ? "lazy" : "eager"}
+          className={`${compact ? "h-7 w-7 md:h-8 md:w-8" : "h-10 w-10"} shrink-0 object-contain brightness-0 invert`}
+        />
+      </span>
       <span className="flex flex-col leading-none">
         <span
-          className={`font-heading font-bold uppercase tracking-[.11em] ${compact ? "text-xl md:text-2xl" : "text-2xl"} ${inverted ? "text-white" : "text-primary"}`}
+          className={`font-serif-heading tracking-[.06em] font-bold ${compact ? "text-lg md:text-xl" : "text-xl"} text-white`}
         >
-          Supala
+          cafeko
         </span>
         <span
-          className={`mt-1 text-[8px] font-bold uppercase tracking-[.24em] ${inverted ? "text-accent" : "text-muted"}`}
+          className="mt-0.5 text-[8px] font-semibold tracking-[.18em] uppercase text-accent"
         >
           Coffee &amp; Space
         </span>
@@ -35,3 +37,5 @@ export function BrandLockup({
     </span>
   );
 }
+
+

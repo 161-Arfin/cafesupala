@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
@@ -7,62 +6,60 @@ export function HomeSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[760px] overflow-hidden bg-primary md:min-h-screen"
+      className="relative min-h-[calc(100vh-64px)] lg:h-[calc(100vh-64px)] lg:max-h-[920px] w-full flex items-center bg-[#121214] overflow-hidden pt-16"
     >
-      <Image
-        src={siteConfig.images.hero}
-        alt="Barista meracik kopi di balik meja Supala Coffee"
-        fill
-        preload
-        quality={100}
-        sizes="100vw"
-        className="hero-image object-cover object-[70%_center]"
-      />
-      <div className="absolute inset-0 bg-black/45" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,.15)_48%,rgba(0,0,0,.62)_100%)]" />
-      <Container className="relative z-10 flex min-h-[760px] items-center justify-center pb-20 pt-32 text-center text-white md:min-h-screen">
-        <div className="max-w-4xl">
+      {/* Background Image Container (Full Bleed) */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <div className="absolute right-0 top-20 bottom-0 w-full lg:w-[58%] xl:w-[55%]">
           <Image
-            src="/images/supala-logo.png"
-            alt=""
-            width={892}
-            height={892}
-            unoptimized
-            aria-hidden="true"
-            loading="eager"
-            className="hero-reveal mx-auto mb-5 h-24 w-24 rounded-full bg-background/95 p-2 md:h-28 md:w-28"
+            src="/images/hero-barista.jpg"
+            alt="Barista Cafeko meracik latte art dengan presisi"
+            fill
+            priority
+            quality={95}
+            sizes="(min-width: 1024px) 60vw, 100vw"
+            className="object-cover object-top hero-image"
           />
-          <p
-            className="hero-reveal font-accent text-sm italic text-white/80"
-            style={{ animationDelay: "80ms" }}
-          >
-            Rasa yang pulang, cerita yang tinggal
-          </p>
-          <h1
-            className="hero-reveal mt-4 font-heading text-6xl font-bold uppercase leading-[.94] tracking-[.035em] sm:text-7xl md:text-8xl lg:text-[7rem]"
-            style={{ animationDelay: "160ms" }}
-          >
+        </div>
+
+        {/* Gradients for smooth readability and edge-to-edge blending */}
+        {/* Horizontal gradient from solid dark on left to transparent on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#121214] via-[#121214]/95 md:via-[#121214]/85 lg:via-[#121214]/65 to-transparent lg:w-3/4" />
+
+        {/* Vertical gradient on mobile/tablet */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#121214] via-[#121214]/40 to-[#121214]/30 lg:hidden" />
+
+        {/* Bottom seamless blend to next section */}
+        <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#121214] to-transparent" />
+      </div>
+
+      {/* Hero Content */}
+      <Container className="relative z-10 w-full py-8 lg:py-0">
+        <div className="max-w-xl lg:max-w-2xl">
+          <h1 className="hero-reveal font-serif-heading text-3xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.6rem] font-bold text-white uppercase tracking-tight leading-[1.08]">
             Ritual Dalam
             <br />
-            Setiap Seduhan
+            Setiap Seduhan.
           </h1>
+
           <p
-            className="hero-reveal mx-auto mt-6 max-w-xl text-sm leading-7 text-white/75"
-            style={{ animationDelay: "260ms" }}
+            className="hero-reveal mt-4 text-sm sm:text-base lg:text-lg text-white/75 font-normal leading-relaxed max-w-lg"
+            style={{ animationDelay: "120ms" }}
           >
-            Kopi Indonesia yang diracik dengan perhatian, disajikan dalam ruang
-            hangat untuk percakapan, jeda, dan awal yang baru.
+            Rasakan Kehangatan Ruang dan Kopi Berkualitas
           </p>
-          <div className="hero-reveal mt-9" style={{ animationDelay: "360ms" }}>
-            <Button href="#menu" variant="gold">
-              Lihat Menu
+
+          <div
+            className="hero-reveal mt-7 flex items-center gap-4"
+            style={{ animationDelay: "220ms" }}
+          >
+            <Button href="#menu" variant="gold" className="px-8 py-3 text-xs font-extrabold shadow-lg">
+              LIHAT MENU
             </Button>
           </div>
         </div>
       </Container>
-      {/* <div className="absolute bottom-7 left-1/2 z-10 -translate-x-1/2 text-[9px] font-bold uppercase tracking-[.24em] text-white/60">
-        Scroll untuk menjelajah
-      </div> */}
     </section>
   );
 }
+

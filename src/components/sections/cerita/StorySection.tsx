@@ -25,44 +25,45 @@ const stories = [
 
 export function StorySection() {
   return (
-    <section id="story" className="paper-edge bg-background py-20 md:py-28">
+    <section id="story" className="py-20 md:py-28 bg-[#121214] border-t border-white/5">
       <Container>
-        <div className="reveal text-center">
-          <p className="font-accent text-sm italic text-accent">
-            Yang Terjadi di Supala
-          </p>
-          <h2 className="mt-2 font-heading text-4xl font-bold uppercase tracking-[.04em] text-primary md:text-5xl">
+        <div className="reveal text-center max-w-2xl mx-auto">
+          <span className="text-xs font-bold uppercase tracking-[.2em] text-accent">
+            Yang Terjadi di Cafeko
+          </span>
+          <h2 className="mt-2 font-serif-heading text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white">
             Kopi Menjadi Dasar Cerita
           </h2>
-          <span className="mx-auto mt-5 block h-px w-24 bg-accent" />
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-muted">
+          <span className="mx-auto mt-4 block h-0.5 w-16 bg-accent rounded-full" />
+          <p className="mt-4 text-sm sm:text-base leading-relaxed text-white/70">
             Kami percaya kopi terbaik bukan hanya tentang rasa, tetapi tentang
             pengalaman yang mengiringinya—dari asal biji hingga meja tempat kita
             bertemu.
           </p>
         </div>
-        <div className="mt-14 grid gap-8 md:grid-cols-3 md:gap-6">
+
+        <div className="mt-14 grid gap-8 md:grid-cols-3">
           {stories.map((story) => (
-            <article key={story.number} className="reveal">
-              <div className="relative aspect-[4/3] overflow-hidden">
+            <article key={story.number} className="card-luxury p-4 flex flex-col group">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-[#16161a]">
                 <Image
                   src={story.image}
                   alt={story.title}
                   fill
                   loading="lazy"
                   sizes="(min-width:768px) 33vw, 100vw"
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="mt-6 grid grid-cols-[auto_1fr] gap-4">
-                <span className="font-accent text-4xl italic text-accent">
+              <div className="mt-5 p-2 flex items-start gap-4">
+                <span className="font-serif-heading text-3xl font-bold text-accent">
                   {story.number}
                 </span>
                 <div>
-                  <h3 className="font-heading text-xl font-bold uppercase text-primary">
+                  <h3 className="font-serif-heading text-lg font-bold text-white group-hover:text-accent transition-colors">
                     {story.title}
                   </h3>
-                  <p className="mt-3 text-xs leading-6 text-muted">
+                  <p className="mt-2 text-xs text-white/60 leading-relaxed">
                     {story.body}
                   </p>
                 </div>
@@ -74,3 +75,4 @@ export function StorySection() {
     </section>
   );
 }
+

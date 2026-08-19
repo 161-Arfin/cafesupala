@@ -1,55 +1,148 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { menuCategories } from "@/data/menu";
 
-function TemperatureIcon({ type }: { type: "cold" | "hot" }) {
-  if (type === "cold") {
-    return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-3.5 w-3.5 fill-none stroke-current stroke-[1.6]"><path d="M12 2v20M4.2 6.5l15.6 11M19.8 6.5l-15.6 11M9 4l3 2 3-2M9 20l3-2 3 2M4.8 9.5l.2 3.6-3 .6M19.2 14.5l-.2-3.6 3-.6M19.2 9.5l-.2 3.6 3 .6M4.8 14.5l.2-3.6-3-.6" /></svg>;
-  }
-  return <svg viewBox="0 0 24 24" aria-hidden="true" className="h-3.5 w-3.5 fill-none stroke-current stroke-[1.6]"><path d="M5 10h12v4.5A4.5 4.5 0 0 1 12.5 19h-3A4.5 4.5 0 0 1 5 14.5V10Zm12 2h1.5a2.5 2.5 0 0 1 0 5H16M8 7c0-1.5 1.5-1.5 1.5-3M12 7c0-1.5 1.5-1.5 1.5-3" /></svg>;
-}
+const featuredItems = [
+  {
+    name: "Signature Flat White",
+    price: "Rp 38.000",
+    description: "Warm, rich flavors & velvety smooth steamed milk.",
+    image: "/images/flat-white.jpg",
+    badge: "CAFEKO PICK",
+  },
+  {
+    name: "Iced Spanish Latte",
+    price: "Rp 42.000",
+    description: "Sweet condensed milk with bold espresso and creamy milk.",
+    image: "/images/spanish-latte.jpg",
+    badge: null,
+  },
+  {
+    name: "Almond Croissant",
+    price: "Rp 35.000",
+    description: "Flaky French butter pastry topped with roasted sliced almonds.",
+    image: "/images/almond-croissant.jpg",
+    badge: null,
+  },
+  {
+    name: "Manual Brew (Gayo)",
+    price: "Rp 45.000",
+    description: "Single origin Aceh Gayo with fruity & floral notes.",
+    image: "/images/manual-brew.jpg",
+    badge: null,
+  },
+];
 
 export function MenuSection() {
   return (
-    <section id="menu" className="section-space bg-surface">
+    <section id="menu" className="py-16 md:py-24 bg-[#121214]">
       <Container>
-        <div className="reveal text-center">
-          <p className="font-accent text-sm italic text-accent">Menu Supala</p>
-          <h2 className="mt-2 font-heading text-4xl font-bold uppercase tracking-[.04em] text-primary md:text-5xl">Pilih Rasa Favoritmu</h2>
-          <span className="mx-auto mt-5 block h-px w-24 bg-accent" />
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-muted">Dari racikan klasik sampai signature yang segar. Harga dalam ribuan rupiah dan dapat berubah mengikuti informasi terbaru di kedai.</p>
+        {/* Menu Unggulan Header */}
+        <div className="reveal flex flex-col md:flex-row md:items-end justify-between mb-10">
+          <div>
+            <h2 className="font-serif-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tight">
+              MENU UNGGULAN
+            </h2>
+            <p className="mt-2 text-sm text-white/60">
+              Pilihan racikan terbaik dan pastry favorit kurasi barista Cafeko.
+            </p>
+          </div>
         </div>
 
-        <div className="mt-12 grid gap-px overflow-hidden border border-outline bg-outline lg:grid-cols-2">
-          {menuCategories.map((category) => {
-            const hasCold = category.items.some((item) => item.coldPrice);
-            const hasHot = category.items.some((item) => item.hotPrice);
-            const priceColumns = hasCold && hasHot ? "grid-cols-2" : "grid-cols-1";
+        {/* 4 Cards Grid - Mockup Match */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featuredItems.map((item) => (
+            <article
+              key={item.name}
+              className="card-luxury overflow-hidden flex flex-col p-4 group"
+            >
+              <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#141416] mb-4">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                {item.badge && (
+                  <span className="absolute top-3 left-3 bg-[#c89b3c] text-[#121214] text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                    {item.badge}
+                  </span>
+                )}
+              </div>
+              
+              <div className="flex flex-col flex-grow">
+                <h3 className="font-serif-heading text-lg font-bold text-white group-hover:text-accent transition-colors">
+                  {item.name}
+                </h3>
+                <p className="mt-1 text-sm font-semibold text-accent">
+                  {item.price}
+                </p>
+                <p className="mt-2 text-xs text-white/60 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
 
-            return (
-              <article key={category.id} className="reveal bg-white p-6 md:p-8">
-                <header className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 border-b border-primary pb-4">
-                  <div><h3 className="font-heading text-3xl font-bold uppercase text-primary">{category.title}</h3><p className="mt-1 text-[10px] leading-5 text-muted">{category.subtitle}</p></div>
-                  <div className={`grid min-w-16 ${priceColumns} gap-3 text-muted`}>
-                    {hasCold && <span className="flex justify-center" aria-label="Kolom harga dingin" title="Dingin"><TemperatureIcon type="cold" /></span>}
-                    {hasHot && <span className="flex justify-center" aria-label="Kolom harga panas" title="Panas"><TemperatureIcon type="hot" /></span>}
-                  </div>
-                </header>
-                <div className="mt-5 space-y-5">
-                  {category.items.map((item) => (
-                    <div key={item.name} className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4">
-                      <div><h4 className="font-heading text-base font-bold uppercase text-primary">{item.name}{item.featured && <span className="ml-2 align-middle text-[8px] font-bold tracking-[.12em] text-accent">SUPALA PICK</span>}</h4><p className="mt-0.5 text-[10px] leading-5 text-muted">{item.description}</p></div>
-                      <div className={`grid min-w-16 ${priceColumns} gap-3 text-center text-sm font-bold tabular-nums text-primary`}>
-                        {hasCold && <span aria-label={item.coldPrice ? `Dingin ${item.coldPrice}` : "Tidak tersedia dingin"}>{item.coldPrice ?? "—"}</span>}
-                        {hasHot && <span aria-label={item.hotPrice ? `Panas ${item.hotPrice}` : "Tidak tersedia panas"}>{item.hotPrice ?? "—"}</span>}
+        {/* Slider Pagination Indicator Dots */}
+        <div className="flex justify-center items-center gap-2 mt-8">
+          <span className="h-1.5 w-6 rounded-full bg-accent" />
+          <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+        </div>
+
+        {/* Full Menu Categories Accordion/Grid */}
+        <div className="mt-20 pt-16 border-t border-white/10">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-[.2em] text-accent">Daftar Menu Lengkap</span>
+            <h3 className="font-serif-heading text-2xl sm:text-3xl font-bold text-white uppercase mt-2">
+              Koleksi Kopi &amp; Minuman
+            </h3>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {menuCategories.map((category) => (
+              <div
+                key={category.id}
+                className="bg-[#18181c] border border-white/5 rounded-2xl p-6 sm:p-8"
+              >
+                <div className="border-b border-white/10 pb-4 mb-6">
+                  <h4 className="font-serif-heading text-2xl font-bold text-white uppercase">
+                    {category.title}
+                  </h4>
+                  <p className="text-xs text-white/50 mt-1">{category.subtitle}</p>
+                </div>
+                
+                <div className="space-y-4">
+                  {category.items.map((menuItem) => (
+                    <div
+                      key={menuItem.name}
+                      className="flex items-start justify-between gap-4 border-b border-white/5 pb-3 last:border-0"
+                    >
+                      <div>
+                        <span className="text-sm font-bold text-white flex items-center gap-2">
+                          {menuItem.name}
+                          {menuItem.featured && (
+                            <span className="text-[8px] font-extrabold uppercase px-2 py-0.5 rounded bg-accent/20 text-accent">
+                              PICK
+                            </span>
+                          )}
+                        </span>
+                        <p className="text-xs text-white/50 mt-0.5">{menuItem.description}</p>
                       </div>
+                      <span className="text-sm font-bold text-accent whitespace-nowrap">
+                        {menuItem.price}
+                      </span>
                     </div>
                   ))}
                 </div>
-              </article>
-            );
-          })}
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
   );
 }
+

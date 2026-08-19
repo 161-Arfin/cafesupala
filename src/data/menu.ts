@@ -28,7 +28,7 @@ export const menuCategories: MenuCategory[] = [
   {
     id: "signature",
     title: "Signature",
-    subtitle: "Racikan khas Supala yang segar dan mudah dinikmati.",
+    subtitle: "Racikan khas Cafeko yang segar dan mudah dinikmati.",
     items: [
       { name: "Paradise Punch", description: "Cold brew, orange, dan soda.", price: "28K", coldPrice: "28K", featured: true },
       { name: "Endless Love", description: "Chocolate drink dengan tekstur crunchy.", price: "28K", coldPrice: "28K", featured: true },

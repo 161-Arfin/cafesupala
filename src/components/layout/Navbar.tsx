@@ -31,27 +31,87 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 border-b border-outline/70 bg-white/95 text-primary backdrop-blur-md transition-shadow duration-300 ${scrolled || open ? "shadow-[0_6px_24px_rgba(0,0,0,.07)]" : "shadow-none"}`}>
-      <Container as="nav" aria-label="Navigasi utama" className="flex h-16 items-center justify-between md:h-[72px]">
-        <a href="#home" aria-label="Supala Coffee and Space, kembali ke atas" className="relative z-10 shrink-0">
+    <header className={`fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#121214]/92 text-white backdrop-blur-md transition-all duration-300 ${scrolled ? "shadow-[0_8px_32px_rgba(0,0,0,0.6)]" : ""}`}>
+      <Container as="nav" aria-label="Navigasi utama" className="flex h-16 items-center justify-between">
+        <a href="#home" aria-label="Cafeko Coffee and Space, kembali ke atas" className="relative z-10 shrink-0">
           <BrandLockup compact />
         </a>
-        <ul className="ml-auto hidden items-center gap-6 lg:flex">
+
+        <ul className="mx-auto hidden items-center gap-6 lg:flex">
           {navigation.map((item) => {
             const active = activeHref === item.href;
-            return <li key={item.href}><a href={item.href} aria-current={active ? "page" : undefined} className={`relative block py-2 text-[11px] font-bold uppercase tracking-[.18em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${active ? "text-accent after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-accent" : "text-primary hover:text-accent"}`}>{item.label}</a></li>;
+            return (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`relative block py-1 text-[11px] font-semibold uppercase tracking-[.15em] transition-colors duration-200 ${
+                    active ? "text-accent font-bold" : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                  {active && (
+                    <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-accent rounded-full" />
+                  )}
+                </a>
+              </li>
+            );
           })}
         </ul>
-        <button type="button" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Tutup menu" : "Buka menu"} onClick={() => setOpen((value) => !value)} className="grid h-11 w-11 place-items-center text-primary lg:hidden">
-          <span aria-hidden="true" className="space-y-1.5"><span className="block h-px w-7 bg-current" /><span className="block h-px w-7 bg-current" /><span className="block h-px w-7 bg-current" /></span>
+
+        <div className="hidden items-center gap-3 lg:flex">
+          <a
+            href="#reservation"
+            className="inline-flex items-center justify-center px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-[#c69a52] to-[#eed07c] text-[#121214] shadow-[0_2px_14px_rgba(212,175,55,0.35)] hover:brightness-110 hover:shadow-[0_4px_18px_rgba(212,175,55,0.55)] transition-all"
+          >
+            BOOKING
+          </a>
+        </div>
+
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label={open ? "Tutup menu" : "Buka menu"}
+          onClick={() => setOpen((value) => !value)}
+          className="grid h-10 w-10 place-items-center text-white lg:hidden"
+        >
+          <span aria-hidden="true" className="space-y-1">
+            <span className="block h-0.5 w-5 bg-current rounded-full" />
+            <span className="block h-0.5 w-5 bg-current rounded-full" />
+            <span className="block h-0.5 w-5 bg-current rounded-full" />
+          </span>
         </button>
       </Container>
-      <div id="mobile-menu" className={`overflow-hidden bg-white transition-[max-height] duration-300 lg:hidden ${open ? "max-h-80" : "max-h-0"}`}>
-        <ul className="border-t border-outline/70 px-5 py-2">
+
+      <div id="mobile-menu" className={`overflow-hidden bg-[#16161a] border-b border-white/10 transition-[max-height] duration-300 lg:hidden ${open ? "max-h-96" : "max-h-0"}`}>
+        <ul className="px-5 py-3 space-y-2">
           {navigation.map((item) => {
             const active = activeHref === item.href;
-            return <li key={item.href}><a href={item.href} aria-current={active ? "page" : undefined} onClick={() => setOpen(false)} className={`flex min-h-12 items-center border-b border-outline/60 text-xs font-bold uppercase tracking-[.18em] transition-colors ${active ? "text-accent" : "text-primary hover:text-accent"}`}>{item.label}</a></li>;
+            return (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                  className={`block py-1.5 text-xs font-bold uppercase tracking-[.18em] transition-colors ${
+                    active ? "text-accent" : "text-white/80 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
           })}
+          <li className="pt-2">
+            <a
+              href="#reservation"
+              onClick={() => setOpen(false)}
+              className="inline-flex w-full items-center justify-center py-2 text-xs font-bold uppercase tracking-wider rounded-full bg-gradient-to-r from-[#c69a52] to-[#eed07c] text-[#121214]"
+            >
+              BOOKING SEKARANG
+            </a>
+          </li>
         </ul>
       </div>
     </header>

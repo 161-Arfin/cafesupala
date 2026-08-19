@@ -7,6 +7,7 @@ import { GallerySection } from "@/components/sections/galeri/GallerySection";
 import { HomeSection } from "@/components/sections/home/HomeSection";
 import { LocationSection } from "@/components/sections/lokasi/LocationSection";
 import { MenuSection } from "@/components/sections/menu/MenuSection";
+import { ReservationSection } from "@/components/sections/reservasi/ReservationSection";
 import { siteConfig } from "@/config/site";
 import { business } from "@/data/business";
 
@@ -62,7 +63,7 @@ export default function Home() {
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta name="theme-color" content="#101010" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/images/supala-logo.png" />
+        <link rel="apple-touch-icon" href="/images/cafeko-logo.png" />
         {siteUrl && <link rel="canonical" href={siteUrl} />}
         <meta property="og:title" content={siteConfig.title} />
         <meta property="og:description" content={siteConfig.description} />
@@ -74,7 +75,7 @@ export default function Home() {
         {socialImage && (
           <meta
             property="og:image:alt"
-            content="Suasana Supala Coffee and Space"
+            content="Suasana Cafeko Coffee and Space"
           />
         )}
         <meta name="twitter:card" content="summary_large_image" />
@@ -88,12 +89,13 @@ export default function Home() {
       </Head>
       <MainLayout>
         <HomeSection />
+        <MenuSection />
+        <LocationSection />
         <StorySection />
         <ExperienceSection />
-        <MenuSection />
         <GallerySection />
         <AboutUsSection />
-        <LocationSection />
+        <ReservationSection />
       </MainLayout>
     </>
   );
