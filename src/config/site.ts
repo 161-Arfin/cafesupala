@@ -35,6 +35,7 @@ export const siteConfig = {
   images: {
     logo: "/images/cafeko-logo.png",
     hero: "/images/hero-barista.jpg",
+    og: "/images/og-image.jpg",
     workspace: "/images/lyons-workspace-hd.png",
     drinks: "/images/lyons-drinks-hd.png",
     barista: "/images/lyons-barista-hd.png",

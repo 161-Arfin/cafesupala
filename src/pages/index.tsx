@@ -12,8 +12,14 @@ import { siteConfig } from "@/config/site";
 import { business } from "@/data/business";
 
 export default function Home() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://cafeko.vercel.app";
-  const ogImageUrl = siteUrl ? `${siteUrl}${siteConfig.images.hero}` : siteConfig.images.hero;
+  // Automatically detect domain on Vercel or custom domain
+  const rawUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "") ||
+    "https://cafetemplate-lime.vercel.app";
+
+  const siteUrl = rawUrl.replace(/\/$/, "");
+  const ogImageUrl = `${siteUrl}${siteConfig.images.og || siteConfig.images.hero}`;
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -69,6 +75,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/images/cafeko-logo.png" />
         <link rel="canonical" href={siteUrl} />
+        <meta itemProp="name" content={siteConfig.title} />
+        <meta itemProp="description" content={siteConfig.description} />
+        <meta itemProp="image" content={ogImageUrl} />
 
         {/* Open Graph / Facebook / WhatsApp Preview */}
         <meta property="og:type" content="website" />
@@ -76,6 +85,10 @@ export default function Home() {
         <meta property="og:title" content={siteConfig.title} />
         <meta property="og:description" content={siteConfig.description} />
         <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:secure_url" content={ogImageUrl} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content={`Suasana ${siteConfig.name}`} />
         <meta property="og:site_name" content={siteConfig.name} />
         <meta property="og:locale" content="id_ID" />
