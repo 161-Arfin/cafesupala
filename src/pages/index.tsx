@@ -12,15 +12,19 @@ import { siteConfig } from "@/config/site";
 import { business } from "@/data/business";
 
 export default function Home() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
-  const socialImage = siteUrl
-    ? `${siteUrl}${siteConfig.images.hero}`
-    : undefined;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://cafeko.vercel.app";
+  const ogImageUrl = siteUrl ? `${siteUrl}${siteConfig.images.hero}` : siteConfig.images.hero;
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CafeOrCoffeeShop",
     name: siteConfig.name,
     description: siteConfig.description,
+    image: ogImageUrl,
+    url: siteUrl,
+    telephone: siteConfig.contact.whatsappDisplay,
+    priceRange: "Rp20.000 - Rp45.000",
+    servesCuisine: ["Specialty Coffee", "Espresso", "Pastry", "Beverages"],
     address: {
       "@type": "PostalAddress",
       streetAddress: "Jl. Babarsari, Tambakbayan",
@@ -34,6 +38,7 @@ export default function Home() {
       latitude: -7.7796125,
       longitude: 110.4148143,
     },
+    hasMap: siteConfig.links.maps,
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -48,40 +53,41 @@ export default function Home() {
         closes: "00:00",
       },
     ],
-    servesCuisine: ["Coffee", "Non-coffee beverages"],
-    priceRange: "Rp21.000–Rp28.000",
-    hasMap: business.mapsUrl,
-    ...(siteUrl ? { url: siteUrl, image: socialImage } : {}),
   };
 
   return (
     <>
       <Head>
+        {/* Primary Meta Tags */}
         <title>{siteConfig.title}</title>
+        <meta name="title" content={siteConfig.title} />
         <meta name="description" content={siteConfig.description} />
         <meta name="keywords" content={siteConfig.keywords.join(", ")} />
-        <meta name="robots" content="index, follow, max-image-preview:large" />
-        <meta name="theme-color" content="#101010" />
+        <meta name="author" content={siteConfig.name} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="theme-color" content="#121214" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/images/cafeko-logo.png" />
-        {siteUrl && <link rel="canonical" href={siteUrl} />}
+        <link rel="canonical" href={siteUrl} />
+
+        {/* Open Graph / Facebook / WhatsApp Preview */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={siteUrl} />
         <meta property="og:title" content={siteConfig.title} />
         <meta property="og:description" content={siteConfig.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="id_ID" />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:alt" content={`Suasana ${siteConfig.name}`} />
         <meta property="og:site_name" content={siteConfig.name} />
-        {siteUrl && <meta property="og:url" content={siteUrl} />}
-        {socialImage && <meta property="og:image" content={socialImage} />}
-        {socialImage && (
-          <meta
-            property="og:image:alt"
-            content="Suasana Cafeko Coffee and Space"
-          />
-        )}
+        <meta property="og:locale" content="id_ID" />
+
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={siteUrl} />
         <meta name="twitter:title" content={siteConfig.title} />
         <meta name="twitter:description" content={siteConfig.description} />
-        {socialImage && <meta name="twitter:image" content={socialImage} />}
+        <meta name="twitter:image" content={ogImageUrl} />
+
+        {/* Schema.org Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
